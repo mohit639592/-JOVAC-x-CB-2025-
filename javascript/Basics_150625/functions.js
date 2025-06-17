@@ -64,3 +64,6 @@ function mul(a,b){
     }
 }
 console.log(mul(3,5));
+
+
+
