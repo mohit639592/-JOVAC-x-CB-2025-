@@ -31,4 +31,8 @@
 // var a = "mohit";
 // console.log(a);
 
+// var a=10;
+// console.log(a);
+// let a=110;            //showing error
+// console.log(a);
 
