@@ -26,151 +26,146 @@ const products = [
     }
 ]
 
-//NORMAL CODE
+// //NORMAL CODE
 
 let cart=[];
 
 let wallet = 90000;
-//1.ADD TO CART
-function add_to_cart(pid){
-        products.find(function(products){
-            if(products.id==pid){
-                    cart.push(products);
-                  console.log(products.pdname + " added to cart");
-}
-    })
-    if(cart.length==0) console.log("PRODUCT NOT FOUND");
+// //1.ADD TO CART
+// function add_to_cart(pid){
+//         products.find(function(products){
+//             if(products.id==pid){
+//                     cart.push(products);
+//                   console.log(products.pdname + " added to cart");
+// }
+//     })
+//     if(cart.length==0) console.log("PRODUCT NOT FOUND");
 
-}
+// }
 
-function showcart(){
-   const show=cart.map(cart=>cart.pdname);
-    console.log("Cart Items:  " , show);
-}
+// function showcart(){
+//    const show=cart.map(cart=>cart.pdname);
+//     console.log("Cart Items:  " , show);
+// }
 
-let totalprice=0;
-
-
-function createOrder(){
-    let pro=cart.map(cart=>cart.pdname+"    "+cart.price);
-    console.log("Your Order:" ,pro);
-    let order = cart.reduce(function(acc,curr){
-        acc=acc+curr.price;
-        return acc;
-},0);
-totalprice=order;
-console.log("Total amount to pay:  "+order);
-}
+// let totalprice=0;
 
 
-function payment(total){
-    if(total<wallet){
-        wallet=wallet-total;
-        console.log("Payment Succsessful. Available Balance:  "+wallet);
-        cart=[];
-    }
-    else{
-        console.log("LOW BALANCE — YOU CAN ONLY BUY THESE ITEMS");
-    }
-}
-
-function moreproduct(){
-    let more=products.filter(products=> products.price<=wallet);
-    let moreprod= more.map(more=> more.pdname+"  "+more.price);
-    console.log("You can buy:" ,moreprod);
-}
+// function createOrder(){
+//     let pro=cart.map(cart=>cart.pdname+"    "+cart.price);
+//     console.log("Your Order:" ,pro);
+//     let order = cart.reduce(function(acc,curr){
+//         acc=acc+curr.price;
+//         return acc;
+// },0);
+// totalprice=order;
+// console.log("Total amount to pay:  "+order);
+// }
 
 
-add_to_cart(3);
-add_to_cart(2);
-add_to_cart(5);
-showcart();
-createOrder();
-payment(totalprice);
-moreproduct();
+// function payment(total){
+//     if(total<wallet){
+//         wallet=wallet-total;
+//         console.log("Payment Succsessful. Available Balance:  "+wallet);
+//         cart=[];
+//     }
+//     else{
+//         console.log("LOW BALANCE — YOU CAN ONLY BUY THESE ITEMS");
+//     }
+// }
+
+// function moreproduct(){
+//     let more=products.filter(products=> products.price<=wallet);
+//     let moreprod= more.map(more=> more.pdname+"  "+more.price);
+//     console.log("You can buy:" ,moreprod);
+// }
+
+
+// add_to_cart(3);
+// add_to_cart(2);
+// add_to_cart(5);
+// showcart();
+// createOrder();
+// payment(totalprice);
+// moreproduct();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// project by callback
+// // project by callback
+// let totalprice = 0;
+
+// // ADD TO CART WITH CALLBACK
+// function add_to_cart(pid, callback) {
+//     const product = products.find(p => p.id === pid);
+//     if (product) {
+//         cart.push(product);
+//         console.log(product.pdname + " added to cart");
+//         callback();
+//     } else {
+//         console.log("PRODUCT NOT FOUND");
+//     }
+// }
+
+// // SHOW CART WITH CALLBACK
+// function showcart(callback) {
+//     const show = cart.map(cart => cart.pdname);
+//     console.log("Cart Items: ", show);
+//     callback();
+// }
+
+// // CREATE ORDER WITH CALLBACK
+// function createOrder(callback) {
+//     const pro = cart.map(cart => cart.pdname + "    " + cart.price);
+//     console.log("Your Order: ", pro);
+//     let order = cart.reduce(function(acc,curr){
+//                 acc=acc+curr.price;
+//                 return acc;
+//         },0);
+//     totalprice = order;
+//     console.log("Total amount to pay: " + order);
+//     callback();
+// }
+
+// // PAYMENT WITH CALLBACK
+// function payment(callback) {
+//     if (totalprice <= wallet) {
+//         wallet = wallet - totalprice;
+//         console.log("Payment Successful. Available Balance: " + wallet);
+//         cart = [];
+//         callback();
+//     } else {
+//         console.log("LOW BALANCE — YOU CAN ONLY BUY THESE ITEMS");
+//         callback();
+//     }
+// }
+
+// // SHOW AVAILABLE PRODUCTS BASED ON BALANCE
+// function moreproduct() {
+//     const more = products.filter(p => p.price <= wallet);
+//     const moreprod = more.map(p => p.pdname + "  " + p.price);
+//     console.log("You can buy: ", moreprod);
+// }
+
+// // RUN FLOW USING CALLBACKS
+// add_to_cart(3, function() {
+//     add_to_cart(2, function() {
+//         add_to_cart(5, function() {
+//             showcart(function() {
+//                 createOrder(function() {
+//                     payment(function() {
+//                         moreproduct();
+//                     });
+//                 });
+//             });
+//         });
+//     });
+// });
 
 
-
-//let totalprice = 0;
-
-// ADD TO CART WITH CALLBACK
-function add_to_cart(pid, callback) {
-    const product = products.find(p => p.id === pid);
-    if (product) {
-        cart.push(product);
-        console.log(product.pdname + " added to cart");
-        callback();
-    } else {
-        console.log("PRODUCT NOT FOUND");
-    }
-}
-
-// SHOW CART WITH CALLBACK
-function showcart(callback) {
-    const show = cart.map(cart => cart.pdname);
-    console.log("Cart Items: ", show);
-    callback();
-}
-
-// CREATE ORDER WITH CALLBACK
-function createOrder(callback) {
-    const pro = cart.map(cart => cart.pdname + "    " + cart.price);
-    console.log("Your Order: ", pro);
-    let order = cart.reduce(function(acc,curr){
-                acc=acc+curr.price;
-                return acc;
-        },0);
-    totalprice = order;
-    console.log("Total amount to pay: " + order);
-    callback();
-}
-
-// PAYMENT WITH CALLBACK
-function payment(callback) {
-    if (totalprice <= wallet) {
-        wallet = wallet - totalprice;
-        console.log("Payment Successful. Available Balance: " + wallet);
-        cart = [];
-        callback();
-    } else {
-        console.log("LOW BALANCE — YOU CAN ONLY BUY THESE ITEMS");
-        callback();
-    }
-}
-
-// SHOW AVAILABLE PRODUCTS BASED ON BALANCE
-function moreproduct() {
-    const more = products.filter(p => p.price <= wallet);
-    const moreprod = more.map(p => p.pdname + "  " + p.price);
-    console.log("You can buy: ", moreprod);
-}
-
-// RUN FLOW USING CALLBACKS
-add_to_cart(3, function() {
-    add_to_cart(2, function() {
-        add_to_cart(5, function() {
-            showcart(function() {
-                createOrder(function() {
-                    payment(function() {
-                        moreproduct();
-                    });
-                });
-            });
-        });
-    });
-});
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//project by promises
-
-
-//let totalprice = 0;
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //project by promises
+let totalprice = 0;
 
 // ADD TO CART BY THE Promise
 function add_to_cart(pid) {
