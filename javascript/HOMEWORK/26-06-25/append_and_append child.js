@@ -29,27 +29,33 @@
 //HW 2
 //DEBOUNCE BY SETINTERVAL
 
-const searchinput=document.getElementById("search");
-function handelsearch(event){
-    console.log("search for: ",event.target.value);
-}
-let intervalId;
+// const searchinput=document.getElementById("search");
+// function handelsearch(event){
+//     console.log("search for: ",event.target.value);
+// }
+// let intervalId;
 
 
-function search_interval(func,delay){
-    let lastargs;
-    return function(...args){
-        lastargs=args;
+// function search_interval(func,delay){
+//     let lastargs;
+//     return function(...args){
+//         lastargs=args;
 
-        if(intervalId){
-            clearInterval(intervalId);
-        }
-        intervalId = setInterval(()=>{
-            func.apply(this,lastargs);
-            clearInterval(intervalId);
-        },delay);
-    };
-}
+//         if(intervalId){
+//             clearInterval(intervalId);
+//         }
+//         intervalId = setInterval(()=>{
+//             func.apply(this,lastargs);
+//             clearInterval(intervalId);
+//         },delay);
+//     };
+// }
 
-const search_now=search_interval(handelsearch,1000);
-searchinput.addEventListener("input",search_now);
+// const search_now=search_interval(handelsearch,1000);
+// searchinput.addEventListener("input",search_now);
+
+
+
+//HW 3
+// DIFFERENCE BETWEEN SCRIPT , SCRIPT ANSYNC , SCRIPT DEEFER
+console.log("JAVA SCRIPT CODE NOW RUN");
